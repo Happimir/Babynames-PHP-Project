@@ -6,7 +6,7 @@ function meaning(){
     // var sel = $("#allnames");
     // var name = sel.options[sel.selectedIndex].value;
 
-	nested = document.getElementById("allnames");
+	var nested = document.getElementById("allnames");
 	nested = nested.options[nested.selectedIndex].value;
 
     $.get("populateMeaningActual.php",
@@ -26,13 +26,26 @@ function meaning(){
 function rank(){
 	//$("#grapharea").append("<p>TESTING</p>");
 
-	var sel = $("#allnames");							// getting values of gender/name
-	var name = sel.options[sel.selectedIndex].value;
-	var gender = $('input[name=gender]:checked').val();
+	// var sel = $("#allnames");							// getting values of gender/name
+	// var name = sel.options[sel.selectedIndex].value;
+	// var gender = $('input[name=gender]:checked').value;
 
-	$.post("babynames.php", { type: "rank", name: name, gender: gender}, function(data){
-		$("#grapharea").append(data);
-	}, "xml");	// query to php file
+    var name = document.getElementById("allnames");
+    name = name.options[name.selectedIndex].value;
+
+    var gender = $("input[name='gender']:checked").val();
+
+	$.get("populateRankingActual.php",
+        {
+            type: "rank",
+            name: name,
+            gender: gender
+        },
+        function(data){
+		//$("#grapharea").append(data);
+            alert ("rank data" + data);
+            document.getElementById("graph").innerHTML = data;
+	});	// query to php file
 		/*.done(function(data){	// will run if success
 			alert(data);
 		})
@@ -49,5 +62,5 @@ document.getElementById("search").addEventListener("click", function(e){
 	document.getElementById("nested").innerHTML = nested;
 	e.preventDefault();
 	meaning();
-	//rank();
+	rank();
 });
