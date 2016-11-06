@@ -9,14 +9,14 @@ function meaning(){
 	var nested = document.getElementById("allnames");
 	nested = nested.options[nested.selectedIndex].value;
 
-    $.get("populateMeaningActual.php",
+    $.get("babynames.php",
     {
        type: "meaning",
        name: nested
     },
-    function (data) {
+    function (e) {
     	//alert("Data loaded " + data);
-        document.getElementById("meaning").innerHTML = data;
+        $("#meaning").innerHTML = e;
     });
 }
 
@@ -35,7 +35,7 @@ function rank(){
 
     var gender = $("input[name='gender']:checked").val();
 
-	$.get("populateRankingActual.php",
+	$.get("babynames.php",
         {
             type: "rank",
             name: name,
@@ -43,7 +43,7 @@ function rank(){
         },
         function(data){
 		//$("#grapharea").append(data);
-            alert ("rank data" + data);
+            //alert ("rank data" + data);
             document.getElementById("graph").innerHTML = data;
 	});	// query to php file
 		/*.done(function(data){	// will run if success
