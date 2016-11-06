@@ -1,12 +1,14 @@
 <?php
 
-if(isset($_GET['name']) && strpos(isset($_GET["type"]), "meaning") !== false) {
+$type = $_GET['type'];
+
+if(isset($_GET['name']) && strpos($type, "meaning") !== false) {
     echo $_GET['type'];
     $name = $_GET['name'];
     populateMeaning($name);
 }
 
-if(isset($_GET['name']) && isset($_GET['gender']) && isset($_GET["type"]) == "rank") {
+if(isset($_GET['name']) && isset($_GET['gender']) && strpos($type, "rank") !== false) {
     echo $_GET['type'];
     $name = $_GET['name'];
     $gender = $_GET['gender'];

@@ -16,7 +16,7 @@ function meaning(){
     },
     function (data) {
     	//alert("Data loaded " + data);
-        $("#meaning").innerHTML = data;
+        document.getElementById("meaning").innerHTML = data;
     });
 }
 
@@ -24,7 +24,7 @@ function meaning(){
 
 /* Fetches the PHP rank query and populates the table if the name exists */
 function rank(){
-    
+
 	//$("#grapharea").append("<p>TESTING</p>");
 
 	// var sel = $("#allnames");							// getting values of gender/name
