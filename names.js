@@ -36,22 +36,22 @@ function rank(){
 
     var gender = $("input[name='gender']:checked").val();
 
-	$.get("babynames.php",
-        {
-            type: "rank",
-            name: name,
-            gender: gender
-        },
+    $.ajax({
+        url : 'babynames.php',
+        type : 'GET',
+        data : {type: "rank", name: name, gender: gender}
+    }).always(function(data, statusText, xhr){
+            console.log(xhr.status);
+    }).done(function(data){
+        document.getElementById("graph").innerHTML = data;
+    });
+
+	/*$.get("babynames.php", {type: "rank", name: name, gender: gender},
         function(data){
-		//$("#grapharea").append(data);
+	        if()
             document.getElementById("graph").innerHTML = data;
-	});	// query to php file
-		/*.done(function(data){	// will run if success
-			alert(data);
-		})
-		.fail(function(){	// will run if error occurs
-			$("#grapharea").append("<p>FAILURE</p>");
-		});*/
+	    }
+    );*/	// query to php file
 }
 
 /* Search button calls the meaning and rank functions and allows subsequent searches */

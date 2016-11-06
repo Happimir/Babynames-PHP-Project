@@ -9,7 +9,7 @@ if(isset($_GET['name']) && strpos($type, "meaning") !== false) {
 }
 
 if(isset($_GET['name']) && isset($_GET['gender']) && strpos($type, "rank") !== false) {
-    echo $_GET['type'];
+    //echo $_GET['type'];
     $name = $_GET['name'];
     $gender = $_GET['gender'];
 
@@ -56,16 +56,39 @@ function populateMeaning($option) {
 function populateRanking($name, $gender) {
     $rankings = fopen("rank.txt", "r") or die("Unable to open file");
 
-    while (!feof($rankings)) {
+    while (!feof($rankings)) {  // iterates through file
+        // gets line and divides it by spaces
         $line = fgets($rankings);
         $parsed = explode(' ', $line);
 
 
-
+        // if first word of line is selected name, and second word is selected gender
         if(strtoupper($parsed[0]) == strtoupper($name) && $parsed[1] == $gender) {
-            echo "name parsed is: " . $parsed[0] . " " .
-                $parsed[1] . " gender is: " . $gender;
-            break;
+            /*echo "name parsed is: " . $parsed[0] . " " .
+                $parsed[1] . " gender is: " . $gender;*/
+            // if there aren't enough objects (no rank data)
+            if( count($parsed) < 15 ){
+                // should send 410 http code
+                http_response_code(410);
+                break;  // exit loop
+            }
+
+            echo "<baby name=\"" . $name . "\" gender=\"" . $gender . "\">\n"; // sets baby tag with name/gender vals
+
+            $index = 2;     // tracks index within $parsed array
+            $year = 1890;   // tracks year the rank corresponds to
+            while( $index < count($parsed)){
+                // add the rank tag with year property, and the rank within the tag
+                echo "<rank year=\"" . $year . "\">" . $parsed[$index] . "</rank>\n";
+
+                // increment counters
+                $index += 1;
+                $year += 10;
+            }
+
+            echo "</baby>"; // closes baby tag
+
+            break; // ends loop
         }
     }
 
