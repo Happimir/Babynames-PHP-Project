@@ -33,7 +33,7 @@
 					<img src="pacifier.gif" alt="icon" />
 					Search
 				</button>
-				<!--<input type="submit" value="submit" name="submit">-->
+				<!--<input type="submit"  value="submit" name="submit">-->
 				</form>
 
 			</div>
