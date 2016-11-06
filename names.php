@@ -84,6 +84,6 @@
 		
 		<!-- your files -->
 		<!--<link href="names.css" type="text/css" rel="stylesheet" /> -->
-		<script src="names.js" type="text/javascript"></script>
+		<script src="names.js" type="text/javascript" ></script>
 	</body>
 </html>

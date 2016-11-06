@@ -1,15 +1,17 @@
 <?php
 
-if(isset($_GET['name'])) {
+if(isset($_GET['name']) && strpos(isset($_GET["type"]), "meaning") !== false) {
+    echo $_GET['type'];
     $name = $_GET['name'];
-    populateMeaning($name, NULL);
+    populateMeaning($name);
 }
 
-if(isset($_GET['name']) && isset($_GET['gender'])) {
+if(isset($_GET['name']) && isset($_GET['gender']) && isset($_GET["type"]) == "rank") {
+    echo $_GET['type'];
     $name = $_GET['name'];
     $gender = $_GET['gender'];
 
-    populateRanking($name, $gender, NULL);
+    populateRanking($name, $gender);
 }
 
 function populateDropdown() {
@@ -25,7 +27,7 @@ function populateDropdown() {
     fclose($names);
 }
 
-function populateMeaning($option, $type) {
+function populateMeaning($option) {
 
 
     $meanings = fopen("meanings.txt", "r") or die("Unable to open file");
@@ -49,7 +51,7 @@ function populateMeaning($option, $type) {
 
 }
 
-function populateRanking($name, $gender, $type) {
+function populateRanking($name, $gender) {
     $rankings = fopen("rank.txt", "r") or die("Unable to open file");
 
     while (!feof($rankings)) {
