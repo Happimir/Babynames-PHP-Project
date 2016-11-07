@@ -31,24 +31,32 @@ function populateMeaning($option) {
 
 
     $meanings = fopen("meanings.txt", "r") or die("Unable to open file");
-
+    $meaning = "";
+    $found = false;
 
     while(!feof($meanings)) {
+        $found = false;
         $selectOption = strtoupper($option);
         $line = fgets($meanings);
 
         $lineExplode = explode(' ', $line);
 
         if($lineExplode[0] == $selectOption){
+            $found = true;
             $meaning = substr($line, strpos(0, ' '), strlen($line));
-
-            echo "<div><p>The name <strong>$option</strong> means ...</p> <hr>
-                    <p><q>$meaning</q></p></div>";
-
-
             //echo $meaning;
             break;
+        } else {
+            $found = false;
         }
+    }
+
+    if($found == true) {
+        echo "<div><p>The name <strong>$option</strong> means ...</p> <hr>
+                    <p><q>$meaning</q></p></div>";
+    } else {
+        echo "<div><p>No associated meaning found</p> <hr>
+                    </div>";
     }
 
     fclose($meanings);

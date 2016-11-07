@@ -88,6 +88,7 @@ function setDivHeight(){
     for(var i = 0; i < divList.length; i++){
         // gets rank number from div and makes it an int
         var height = divList[i].innerHTML;
+
         height = parseInt(height);
 
         // if unranked/1000th
