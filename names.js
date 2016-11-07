@@ -59,6 +59,9 @@ function rank(){
             }
 
             node = document.createElement("tr");    // this tr node will hold bar divs
+			var att = document.createAttribute("id");
+			att.value = "graphTr";
+			node.setAttributeNode(att);
             parentNode = graph.appendChild(node);   // appends to graph (after first tr node)
 
             // turn xml data into usable text

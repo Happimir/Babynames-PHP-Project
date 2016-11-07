@@ -2,6 +2,11 @@
 
 td div {
 
-
+	width: 50px;
     background-color: #FFBBBB;
+}
+
+#graphTr {
+	vertical-align: bottom;
+	height: 250px;
 }
