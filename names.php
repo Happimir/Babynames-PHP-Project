@@ -85,7 +85,7 @@
 		<div id="errors"></div>
 		
 		<!-- your files -->
-		<!--<link href="names.css" type="text/css" rel="stylesheet" /> -->
+		<link href="names.css" type="text/css" rel="stylesheet" />
 		<script src="names.js" type="text/javascript" ></script>
 	</body>
 </html>
