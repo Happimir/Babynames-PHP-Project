@@ -41,11 +41,11 @@ function populateMeaning($option) {
 
         $lineExplode = explode(' ', $line);
 
-        if(strpos($lineExplode[0],$selectOption ) !== false) {
+        if($lineExplode[0] == $selectOption){
             $meaning = substr($line, strpos(0, ' '), strlen($line));
 
             echo $meaning;
-            //break;
+            break;
         }
     }
 
