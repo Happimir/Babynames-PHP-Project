@@ -3,13 +3,11 @@
 $type = $_GET['type'];
 
 if(isset($_GET['name']) && strpos($type, "meaning") !== false) {
-    echo $_GET['type'];
     $name = $_GET['name'];
     populateMeaning($name);
 }
 
 if(isset($_GET['name']) && isset($_GET['gender']) && strpos($type, "rank") !== false) {
-    //echo $_GET['type'];
     $name = $_GET['name'];
     $gender = $_GET['gender'];
 
@@ -44,7 +42,11 @@ function populateMeaning($option) {
         if($lineExplode[0] == $selectOption){
             $meaning = substr($line, strpos(0, ' '), strlen($line));
 
-            echo $meaning;
+            echo "<div><p>The name <strong>$option</strong> means ...</p> <hr>
+                    <p><q>$meaning</q></p></div>";
+
+
+            //echo $meaning;
             break;
         }
     }

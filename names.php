@@ -51,8 +51,10 @@
 			<div id="originmeaning">
 				<h2>Origin/Meaning:</h2>
 
-				<p>The name <b id="nested"></b> means ... </p>
-				<hr>
+<!--				<div style="display: none">-->
+<!--					<p>The name <b id="nested"></b> means ... </p>-->
+<!--					<hr>-->
+<!--				</div>-->
 
 				<!-- baby name meaning data should be inserted into this div -->
 

@@ -33,7 +33,7 @@ function rank(){
     // gets which gender radio button is checked
     var gender = $("input[name='gender']:checked").val();
 
-    $.ajax({
+    $.get({
         url : 'babynames.php',
         type : 'GET',
         data : {type: "rank", name: name, gender: gender},
@@ -107,9 +107,9 @@ function setDivHeight(){
 /* Search button calls the meaning and rank functions and allows subsequent searches */
 document.getElementById("search").addEventListener("click", function(e){
 	$("#resultsarea").show(); // un-hides the display area with all the info
-	nested = document.getElementById("allnames");
-    nested = nested.options[nested.selectedIndex].value;
-	document.getElementById("nested").innerHTML = nested;
+	// nested = document.getElementById("allnames");
+    // nested = nested.options[nested.selectedIndex].value;
+	// document.getElementById("nested").innerHTML = nested;
 	e.preventDefault();
 	meaning();
 	rank();
