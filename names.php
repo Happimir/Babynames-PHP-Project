@@ -71,6 +71,7 @@
 				<h2>Popularity:</h2>
 				
 				<!-- if there is no ranking data for the given name, show this error message -->
+				<!-- <div id="norankdata" style="display: none;"> -->
 				<div id="norankdata" style="display: none;">
 					There is no ranking data for that name/gender combination.
 				</div>

@@ -78,10 +78,30 @@ function rank(){
                 node.appendChild( document.createTextNode(rank) );  // adds rank to inside of div
 
                 tdRef.appendChild(node);    // adds div to td node
-            });
+            }
+			);
             setDivHeight();
         } // if
     }); // done
+	
+    
+	/*$.get({
+        url : 'babynames.php',
+        type : 'GET',
+        data : {type: "find", name: name, gender: gender},
+        asynch : false
+    }).always(function(data, statusText, xhr){
+            console.log(xhr.status);
+    }).done(function(data){
+		document.getElementById("norankdata").style.display = data;
+	}*/
+	$.get("babynames.php",
+    {
+       type: "find", name: name, gender: gender
+    },
+    function (data) {
+		document.getElementById("norankdata").style.display = data;
+    });
 }
 
 function setDivHeight(){
